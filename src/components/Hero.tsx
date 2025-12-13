@@ -29,7 +29,7 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <h1 className="text-[clamp(3rem,15vw,12rem)] font-bold leading-[0.85] tracking-tighter">
+          <h1 className="text-[clamp(2.5rem,12vw,9rem)] font-bold leading-[0.85] tracking-tighter">
             YUG
             <br />
             VASHISTH
@@ -43,8 +43,8 @@ const Hero = () => {
           transition={{ duration: 0.6, delay: 0.5 }}
         >
           <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-            Software Engineering student at McMaster University with a passion for 
-            building intelligent systems, data pipelines, and embedded solutions.
+            Software Engineering student at McMaster University passionate about 
+            AI/ML, data science, and building intelligent systems that make an impact.
           </p>
         </motion.div>
 
@@ -101,7 +101,6 @@ const Hero = () => {
         </motion.div>
         <div className="font-mono text-sm text-right text-muted-foreground">
           <div>MISSISSAUGA, ON</div>
-          <div>(647) 612-3972</div>
         </div>
       </motion.div>
     </section>
