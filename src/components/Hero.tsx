@@ -43,8 +43,8 @@ const Hero = () => {
           transition={{ duration: 0.6, delay: 0.5 }}
         >
           <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-            Software Engineering student at McMaster University passionate about 
-            AI/ML, data science, and embedded systems — building intelligent solutions that make an impact.
+            Software Engineering student at McMaster University with a passion for 
+            AI/ML, data science, and embedded systems — crafting intelligent solutions from silicon to software.
           </p>
         </motion.div>
 
