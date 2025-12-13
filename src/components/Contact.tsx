@@ -31,17 +31,6 @@ const Contact = () => {
           </a>
 
           <a 
-            href="tel:+16476123972"
-            className="group flex justify-between items-center border border-background/20 p-6 hover:bg-background hover:text-foreground transition-colors"
-          >
-            <div>
-              <div className="font-mono text-sm opacity-60">PHONE</div>
-              <div className="text-xl mt-1">(647) 612-3972</div>
-            </div>
-            <ArrowUpRight className="transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-          </a>
-
-          <a 
             href="https://linkedin.com/in/yug-vashisth"
             target="_blank"
             rel="noopener noreferrer"
