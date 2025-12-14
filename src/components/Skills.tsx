@@ -19,7 +19,7 @@ const skillCategories = [
   },
   {
     title: "TOOLS & PRACTICES",
-    skills: ["Testing (Jest/PyTest/JUnit)", "SDLC", "Agile", "System Design Basics"]
+    skills: ["Testing (Jest/PyTest/JUnit)", "SDLC", "Agile", "System Design Basics", "OOP"]
   },
   {
     title: "ADDITIONAL",
