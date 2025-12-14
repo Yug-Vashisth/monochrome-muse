@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, Trophy } from "lucide-react";
 import projectLiftez from "@/assets/project-liftez.png";
 import projectInternscrapes from "@/assets/project-internscrapes.png";
-import projectGiants from "@/assets/project-giants.png";
+import projectGiants from "@/assets/imgforsite.jpg";
 
 const projects = [
   {
