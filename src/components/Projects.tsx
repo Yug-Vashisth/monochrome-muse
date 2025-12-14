@@ -1,7 +1,16 @@
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Trophy } from "lucide-react";
 
 const projects = [
+  {
+    title: "LiftEZ",
+    tech: "Python, OpenCV, MediaPipe, PyTorch, React",
+    link: "https://github.com/Yug-Vashisth/DeltaHacks-Submission",
+    devpost: "https://devpost.com/software/liftez",
+    description: "AI-powered real-time form feedback for beginner gym exercises using pose estimation",
+    stats: ["DeltaHacks XI", "Real-time CV pipeline", "3 exercises supported"],
+    hackathon: true
+  },
   {
     title: "InternScrapes",
     tech: "Python, SQLite, BeautifulSoup",
@@ -46,12 +55,20 @@ const Projects = () => {
             className="group block border border-border p-8 hover:bg-foreground hover:text-background transition-colors duration-300"
           >
             <div className="flex justify-between items-start mb-6">
-              <div className="font-mono text-sm text-muted-foreground group-hover:text-background/60">
-                {project.tech}
+              <div className="flex items-center gap-3">
+                <div className="font-mono text-sm text-muted-foreground group-hover:text-background/60">
+                  {project.tech}
+                </div>
+                {project.hackathon && (
+                  <span className="flex items-center gap-1 text-xs font-mono border border-current px-2 py-0.5">
+                    <Trophy size={12} />
+                    HACKATHON
+                  </span>
+                )}
               </div>
               <ArrowUpRight 
                 size={24} 
-                className="transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" 
+                className="transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform flex-shrink-0" 
               />
             </div>
 
@@ -60,7 +77,7 @@ const Projects = () => {
               {project.description}
             </p>
 
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-3 mb-4">
               {project.stats.map((stat, i) => (
                 <span 
                   key={i} 
@@ -70,6 +87,18 @@ const Projects = () => {
                 </span>
               ))}
             </div>
+
+            {project.devpost && (
+              <a
+                href={project.devpost}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="inline-block font-mono text-xs underline opacity-60 hover:opacity-100 transition-opacity"
+              >
+                View on DevPost →
+              </a>
+            )}
           </motion.a>
         ))}
       </div>
