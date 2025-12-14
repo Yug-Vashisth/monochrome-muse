@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, Trophy } from "lucide-react";
 import projectLiftez from "@/assets/imgforgym.png";
-import projectInternscrapes from "@/assets/imgforis.png";
-import projectGiants from "@/assets/imgforsite.jpeg";
+import projectInternscrapes from "@/assets/imgforis.jpeg";
+import projectGiants from "@/assets/imgforsite.jpg";
 
 const projects = [
   {
