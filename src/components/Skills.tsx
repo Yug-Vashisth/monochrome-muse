@@ -3,19 +3,19 @@ import { motion } from "framer-motion";
 const skillCategories = [
   {
     title: "LANGUAGES",
-    skills: ["TypeScript", "JavaScript", "Ruby", "Python", "Java", "SQL", "C", "Bash"]
+    skills: ["TypeScript", "JavaScript", "Ruby", "Python", "Java", "SQL", "C", "C++", "Bash"]
   },
   {
     title: "FRONTEND",
-    skills: ["React", "HTML", "CSS", "Tailwind", "Framer Motion", "GraphQL (Apollo)"]
+    skills: ["React", "HTML", "CSS", "Tailwind"]
   },
   {
     title: "BACKEND",
-    skills: ["Node.js", "Ruby on Rails", "Flask", "Django", "REST APIs", "Auth (OAuth/JWT)"]
+    skills: ["Node.js", "Ruby on Rails", "Flask", "Django", "REST APIs"]
   },
   {
     title: "DATA & INFRA",
-    skills: ["PostgreSQL", "Redis", "Docker", "CI/CD (GitHub Actions)", "Linux", "Git"]
+    skills: ["PostgreSQL", "Docker", "CI/CD (GitHub Actions)", "Linux", "Git"]
   },
   {
     title: "TOOLS & PRACTICES",
