@@ -3,21 +3,30 @@ import { motion } from "framer-motion";
 const skillCategories = [
   {
     title: "LANGUAGES",
-    skills: ["Python", "Java", "JavaScript", "C", "SQL", "R", "HTML", "CSS", "Bash"]
+    skills: ["TypeScript", "JavaScript", "Ruby", "Python", "Java", "SQL", "C", "Bash"]
   },
   {
-    title: "FRAMEWORKS",
-    skills: ["React", "Node.js", "Flask", "Django", "Tableau"]
+    title: "FRONTEND",
+    skills: ["React", "HTML", "CSS", "Tailwind", "Framer Motion", "GraphQL (Apollo)"]
   },
   {
-    title: "EMBEDDED",
-    skills: ["Arduino", "ESP32", "TI MSP432", "STM32", "I2C", "UART", "VHDL", "Verilog"]
+    title: "BACKEND",
+    skills: ["Node.js", "Ruby on Rails", "Flask", "Django", "REST APIs", "Auth (OAuth/JWT)"]
   },
   {
-    title: "SKILLS",
-    skills: ["Cloud Computing", "Application Development", "Prompt Engineering", "SDLC", "Agile", "Git", "Linux"]
+    title: "DATA & INFRA",
+    skills: ["PostgreSQL", "Redis", "Docker", "CI/CD (GitHub Actions)", "Linux", "Git"]
+  },
+  {
+    title: "TOOLS & PRACTICES",
+    skills: ["Testing (Jest/PyTest/JUnit)", "SDLC", "Agile", "System Design Basics"]
+  },
+  {
+    title: "ADDITIONAL",
+    skills: ["Arduino", "ESP32", "STM32", "I2C", "UART", "Verilog", "VHDL", "Tableau"]
   }
 ];
+
 
 const Skills = () => {
   return (
