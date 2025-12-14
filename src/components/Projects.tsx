@@ -1,5 +1,8 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, Trophy } from "lucide-react";
+import projectLiftez from "@/assets/project-liftez.png";
+import projectInternscrapes from "@/assets/project-internscrapes.png";
+import projectGiants from "@/assets/project-giants.png";
 
 const projects = [
   {
@@ -9,21 +12,24 @@ const projects = [
     devpost: "https://devpost.com/software/liftez",
     description: "AI-powered real-time form feedback for beginner gym exercises using pose estimation",
     stats: ["DeltaHacks XI", "Real-time CV pipeline", "3 exercises supported"],
-    hackathon: true
+    hackathon: true,
+    image: projectLiftez
   },
   {
     title: "InternScrapes",
     tech: "Python, SQLite, BeautifulSoup",
     link: "https://github.com/Yug-Vashisth/Internscrapes",
     description: "Automated web scraper monitoring 8+ major tech companies for internship postings",
-    stats: ["90% reduction in job search time", "1000+ unique postings tracked", "Daily email digests"]
+    stats: ["90% reduction in job search time", "1000+ unique postings tracked", "Daily email digests"],
+    image: projectInternscrapes
   },
   {
     title: "Giants Gameday Predictor",
     tech: "Machine Learning, Python, Pandas",
     link: "https://github.com/Yug-Vashisth/Giants_ML_Predictor",
     description: "ML model predicting NFL game outcomes using historical data and betting lines",
-    stats: ["70%+ validation accuracy", "Custom feature engineering", "Automated data pipelines"]
+    stats: ["70%+ validation accuracy", "Custom feature engineering", "Automated data pipelines"],
+    image: projectGiants
   }
 ];
 
@@ -52,53 +58,64 @@ const Projects = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.15 }}
             viewport={{ once: true }}
-            className="group block border border-border p-8 hover:bg-foreground hover:text-background transition-colors duration-300"
+            className="group block border border-border overflow-hidden hover:bg-foreground hover:text-background transition-colors duration-300"
           >
-            <div className="flex justify-between items-start mb-6">
-              <div className="flex items-center gap-3">
-                <div className="font-mono text-sm text-muted-foreground group-hover:text-background/60">
-                  {project.tech}
-                </div>
-                {project.hackathon && (
-                  <span className="flex items-center gap-1 text-xs font-mono border border-current px-2 py-0.5">
-                    <Trophy size={12} />
-                    HACKATHON
-                  </span>
-                )}
-              </div>
-              <ArrowUpRight 
-                size={24} 
-                className="transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform flex-shrink-0" 
+            {/* Project Image */}
+            <div className="aspect-video overflow-hidden border-b border-border">
+              <img 
+                src={project.image} 
+                alt={project.title}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
             </div>
 
-            <h3 className="text-3xl font-bold mb-4">{project.title}</h3>
-            <p className="text-muted-foreground group-hover:text-background/70 mb-8">
-              {project.description}
-            </p>
+            <div className="p-8">
+              <div className="flex justify-between items-start mb-6">
+                <div className="flex items-center gap-3 flex-wrap">
+                  <div className="font-mono text-sm text-muted-foreground group-hover:text-background/60">
+                    {project.tech}
+                  </div>
+                  {project.hackathon && (
+                    <span className="flex items-center gap-1 text-xs font-mono border border-current px-2 py-0.5">
+                      <Trophy size={12} />
+                      HACKATHON
+                    </span>
+                  )}
+                </div>
+                <ArrowUpRight 
+                  size={24} 
+                  className="transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform flex-shrink-0" 
+                />
+              </div>
 
-            <div className="flex flex-wrap gap-3 mb-4">
-              {project.stats.map((stat, i) => (
-                <span 
-                  key={i} 
-                  className="font-mono text-xs px-3 py-1 border border-current opacity-60"
+              <h3 className="text-3xl font-bold mb-4">{project.title}</h3>
+              <p className="text-muted-foreground group-hover:text-background/70 mb-8">
+                {project.description}
+              </p>
+
+              <div className="flex flex-wrap gap-3 mb-4">
+                {project.stats.map((stat, i) => (
+                  <span 
+                    key={i} 
+                    className="font-mono text-xs px-3 py-1 border border-current opacity-60"
+                  >
+                    {stat}
+                  </span>
+                ))}
+              </div>
+
+              {project.devpost && (
+                <a
+                  href={project.devpost}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className="inline-block font-mono text-xs underline opacity-60 hover:opacity-100 transition-opacity"
                 >
-                  {stat}
-                </span>
-              ))}
+                  View on DevPost →
+                </a>
+              )}
             </div>
-
-            {project.devpost && (
-              <a
-                href={project.devpost}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className="inline-block font-mono text-xs underline opacity-60 hover:opacity-100 transition-opacity"
-              >
-                View on DevPost →
-              </a>
-            )}
           </motion.a>
         ))}
       </div>
