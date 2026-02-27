@@ -5,7 +5,7 @@ const experiences = [
     company: "L3Harris Technologies",
     role: "Incoming Software Engineering Intern – Operations & Test Engineering",
     period: "Summer 2026 (Incoming)",
-    location: "Burlington, ON",
+    location: "Waterdown, ON",
     description: "Operations & Test Engineering – Software",
     logo: "/l3logo.png",
     highlights: [
