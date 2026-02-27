@@ -2,11 +2,22 @@ import { motion } from "framer-motion";
 
 const experiences = [
   {
+    company: "L3Harris Technologies",
+    role: "Incoming Software Engineering Intern – Operations & Test Engineering",
+    period: "Summer 2026 (Incoming)",
+    location: "Burlington, ON",
+    description: "Operations & Test Engineering – Software",
+    logo: "/assets/l3logo-dafa0563-0821-4fef-b59f-4a2306acf878.png",
+    highlights: [
+    ]
+  },
+  {
     company: "McMaster University",
     role: "Teaching Assistant",
     period: "Aug 2025 – Present",
     location: "Hamilton, ON",
     description: "Digital Systems & Computer Architecture",
+    logo: "/assets/maclogo-55f17996-2133-4b61-9515-d403ce260de2.png",
     highlights: [
       "Led weekly lab sessions for 60+ undergraduate students",
       "Designed simulation-based lab tools using VHDL/Verilog",
@@ -19,6 +30,7 @@ const experiences = [
     period: "May 2025 – Aug 2025",
     location: "Toronto, ON",
     description: "Enterprise HR Analytics",
+    logo: "/assets/RBC_Logo_6168_-dceb8711-afae-4f4b-88be-a6e3cec5ba33.png",
     highlights: [
       "Engineered data pipelines and ETL processes across cloud and on-premise platforms",
       "Automated Tableau dashboards, improving reporting speed by 65%",
@@ -43,6 +55,7 @@ const experiences = [
     period: "Oct 2024 – Present",
     location: "Hamilton, ON",
     description: "Exoskeleton Technology",
+    logo: "/assets/exologo-13f16aa3-462b-4e0a-b0fd-193906825740.png",
     highlights: [
       "Designed motor control algorithms for exoskeleton technology",
       "Developed predictive AI models for user adaptability",
@@ -77,9 +90,20 @@ const Experience = () => {
           >
             <div className="md:col-span-4">
               <div className="font-mono text-sm opacity-60">{exp.period}</div>
-              <h3 className="text-2xl font-bold mt-2">{exp.company}</h3>
-              <div className="text-lg mt-1">{exp.role}</div>
-              <div className="font-mono text-sm opacity-60 mt-2">{exp.location}</div>
+              <div className="mt-2 flex items-start gap-4">
+                {exp.logo && (
+                  <img
+                    src={exp.logo}
+                    alt={`${exp.company} logo`}
+                    className="w-10 h-10 md:w-12 md:h-12 object-contain rounded-sm bg-background/10"
+                  />
+                )}
+                <div>
+                  <h3 className="text-2xl font-bold">{exp.company}</h3>
+                  <div className="text-lg mt-1">{exp.role}</div>
+                  <div className="font-mono text-sm opacity-60 mt-2">{exp.location}</div>
+                </div>
+              </div>
             </div>
             <div className="md:col-span-8">
               <div className="font-mono text-sm opacity-60 mb-4">{exp.description}</div>
