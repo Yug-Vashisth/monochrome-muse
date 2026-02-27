@@ -7,7 +7,7 @@ const experiences = [
     period: "Summer 2026 (Incoming)",
     location: "Burlington, ON",
     description: "Operations & Test Engineering – Software",
-    logo: "public/assets/l3logo.png",
+    logo: "/l3logo.png",
     highlights: [
     ]
   },
@@ -17,7 +17,7 @@ const experiences = [
     period: "Aug 2025 – Present",
     location: "Hamilton, ON",
     description: "Digital Systems & Computer Architecture",
-    logo: "public/assets/maclogo.jpg",
+    logo: "/maclogo.jpg",
     highlights: [
       "Led weekly lab sessions for 60+ undergraduate students",
       "Designed simulation-based lab tools using VHDL/Verilog",
@@ -30,7 +30,7 @@ const experiences = [
     period: "May 2025 – Aug 2025",
     location: "Toronto, ON",
     description: "Enterprise HR Analytics",
-    logo: "public/assets/rbclogo.png",
+    logo: "/rbclogo.png",
     highlights: [
       "Engineered data pipelines and ETL processes across cloud and on-premise platforms",
       "Automated Tableau dashboards, improving reporting speed by 65%",
@@ -55,7 +55,7 @@ const experiences = [
     period: "Oct 2024 – Present",
     location: "Hamilton, ON",
     description: "Exoskeleton Technology",
-    logo: "public/assets/exologo.png",
+    logo: "/exologo.png",
     highlights: [
       "Designed motor control algorithms for exoskeleton technology",
       "Developed predictive AI models for user adaptability",
