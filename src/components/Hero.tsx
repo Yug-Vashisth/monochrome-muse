@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const Hero = () => {
   return (
@@ -14,11 +15,12 @@ const Hero = () => {
         <div className="font-mono text-sm tracking-wider">
           <span className="text-muted-foreground">SOFTWARE ENGINEER</span>
         </div>
-        <nav className="flex gap-6 font-mono text-sm">
+        <nav className="flex items-center gap-6 font-mono text-sm">
           <a href="#experience" className="hover-underline">EXPERIENCE</a>
           <a href="#projects" className="hover-underline">PROJECTS</a>
           <a href="#skills" className="hover-underline">SKILLS</a>
           <a href="#contact" className="hover-underline">CONTACT</a>
+          <ThemeToggle />
         </nav>
       </motion.header>
 
