@@ -7,20 +7,25 @@ const Hero = () => {
     <section className="min-h-screen flex flex-col justify-between section-padding py-8">
       {/* Header */}
       <motion.header 
-        className="flex justify-between items-start"
+        className="flex justify-between items-start gap-4 min-h-0 overflow-hidden"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <div className="font-mono text-sm tracking-wider">
+        <div className="font-mono text-sm tracking-wider shrink-0">
           <span className="text-muted-foreground">SOFTWARE ENGINEER</span>
         </div>
-        <nav className="flex items-center gap-6 font-mono text-sm">
-          <a href="#experience" className="hover-underline">EXPERIENCE</a>
-          <a href="#projects" className="hover-underline">PROJECTS</a>
-          <a href="#skills" className="hover-underline">SKILLS</a>
-          <a href="#contact" className="hover-underline">CONTACT</a>
-          <ThemeToggle />
+        <nav 
+          className="flex items-center gap-4 md:gap-6 font-mono text-sm shrink min-w-0 overflow-x-auto overflow-y-hidden py-1 -my-1 [scrollbar-width:thin] [-webkit-overflow-scrolling:touch] touch-pan-x"
+          aria-label="Main navigation"
+        >
+          <a href="#experience" className="hover-underline whitespace-nowrap">EXPERIENCE</a>
+          <a href="#projects" className="hover-underline whitespace-nowrap">PROJECTS</a>
+          <a href="#skills" className="hover-underline whitespace-nowrap">SKILLS</a>
+          <a href="#contact" className="hover-underline whitespace-nowrap">CONTACT</a>
+          <span className="shrink-0">
+            <ThemeToggle />
+          </span>
         </nav>
       </motion.header>
 
