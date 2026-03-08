@@ -27,7 +27,6 @@ const skillCategories = [
   }
 ];
 
-
 const Skills = () => {
   return (
     <section id="skills" className="py-32 section-padding bg-secondary">
@@ -42,37 +41,46 @@ const Skills = () => {
         <h2 className="text-5xl md:text-7xl font-bold mt-2">SKILLS</h2>
       </motion.div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
         {skillCategories.map((category, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
+            transition={{ duration: 0.5, delay: index * 0.08 }}
             viewport={{ once: true }}
           >
             <h3 className="font-mono text-sm tracking-wider text-muted-foreground mb-6 border-b border-border pb-4">
               {category.title}
             </h3>
-            <ul className="space-y-3">
+            <div className="flex flex-wrap gap-2">
               {category.skills.map((skill, i) => (
-                <li key={i} className="text-lg hover:translate-x-2 transition-transform cursor-default">
-                  {skill}
-                </li>
+                <motion.span
+                  key={i}
+                  className="px-4 py-2 text-sm font-mono border border-border hover:bg-foreground hover:text-background transition-all duration-300 cursor-default relative overflow-hidden group"
+                  whileHover={{ scale: 1.05 }}
+                >
+                  <span className="absolute inset-0 bg-foreground/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <span className="relative">{skill}</span>
+                </motion.span>
               ))}
-            </ul>
+            </div>
           </motion.div>
         ))}
       </div>
 
-      {/* Marquee */}
-      <motion.div 
-        className="mt-24 overflow-hidden border-y border-border py-6"
+      {/* Marquee with gradient fade */}
+      <motion.div
+        className="mt-24 overflow-hidden border-y border-border py-6 relative"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
       >
+        {/* Gradient fade edges */}
+        <div className="absolute left-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-r from-secondary to-transparent" />
+        <div className="absolute right-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-l from-secondary to-transparent" />
+
         <div className="flex animate-marquee whitespace-nowrap">
           {[...Array(2)].map((_, i) => (
             <div key={i} className="flex">
