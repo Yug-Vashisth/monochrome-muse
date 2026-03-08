@@ -98,16 +98,10 @@ const Hero = () => {
           transition={{ duration: 1, delay: 0.8, ease: [0.215, 0.61, 0.355, 1] }}
         />
 
-        <motion.div
-          className="mt-12 max-w-xl"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1 }}
-        >
-          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-            Software Engineering student at McMaster University with a passion for AI/ML, data science, and embedded systems, crafting intelligent solutions from silicon to software.
-          </p>
-        </motion.div>
+        <TypewriterDescription
+          text="Software Engineering student at McMaster University with a passion for AI/ML, data science, and embedded systems, crafting intelligent solutions from silicon to software."
+          delay={1}
+        />
 
         <motion.div
           className="mt-8 flex gap-6"
