@@ -105,7 +105,7 @@ const CustomCursor = () => {
         </motion.div>
       ))}
 
-      {/* Outer ring — morphs shape on hover */}
+      {/* Outer crosshair arrows */}
       <motion.div
         className="fixed top-0 left-0 pointer-events-none z-[9999] mix-blend-difference"
         style={{
@@ -116,47 +116,32 @@ const CustomCursor = () => {
           rotate: rotation,
         }}
         animate={{
-          width: isClicking ? 30 : isHovering ? 64 : 40,
-          height: isClicking ? 30 : isHovering ? 64 : 40,
           opacity: isVisible ? 1 : 0,
-          borderRadius: isHovering ? "30%" : "50%",
+          scale: isClicking ? 0.7 : isHovering ? 1.5 : 1,
         }}
         transition={{ type: "spring", stiffness: 500, damping: 30 }}
       >
-        <div className="w-full h-full border border-background relative">
-          <div
-            className="absolute inset-0"
-            style={{ borderRadius: "inherit" }}
-          />
-          {/* Corner accents when hovering */}
-          {isHovering && (
-            <>
-              <motion.div
-                className="absolute -top-1 -left-1 w-2 h-2 border-t border-l border-background"
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.15 }}
-              />
-              <motion.div
-                className="absolute -top-1 -right-1 w-2 h-2 border-t border-r border-background"
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.15, delay: 0.05 }}
-              />
-              <motion.div
-                className="absolute -bottom-1 -left-1 w-2 h-2 border-b border-l border-background"
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.15, delay: 0.1 }}
-              />
-              <motion.div
-                className="absolute -bottom-1 -right-1 w-2 h-2 border-b border-r border-background"
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.15, delay: 0.15 }}
-              />
-            </>
-          )}
+        <div className="relative w-10 h-10">
+          {/* Top arrow */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 flex flex-col items-center">
+            <div className="w-[1px] h-2 bg-background" />
+            <div className="w-0 h-0 border-l-[3px] border-r-[3px] border-b-[4px] border-l-transparent border-r-transparent border-b-background -mt-[1px] rotate-180" />
+          </div>
+          {/* Bottom arrow */}
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex flex-col items-center">
+            <div className="w-0 h-0 border-l-[3px] border-r-[3px] border-t-[4px] border-l-transparent border-r-transparent border-t-background -mb-[1px] rotate-180" />
+            <div className="w-[1px] h-2 bg-background" />
+          </div>
+          {/* Left arrow */}
+          <div className="absolute left-0 top-1/2 -translate-y-1/2 flex flex-row items-center">
+            <div className="w-0 h-0 border-t-[3px] border-b-[3px] border-r-[4px] border-t-transparent border-b-transparent border-r-background" />
+            <div className="h-[1px] w-2 bg-background -ml-[1px]" />
+          </div>
+          {/* Right arrow */}
+          <div className="absolute right-0 top-1/2 -translate-y-1/2 flex flex-row items-center">
+            <div className="h-[1px] w-2 bg-background -mr-[1px]" />
+            <div className="w-0 h-0 border-t-[3px] border-b-[3px] border-l-[4px] border-t-transparent border-b-transparent border-l-background" />
+          </div>
         </div>
       </motion.div>
 
