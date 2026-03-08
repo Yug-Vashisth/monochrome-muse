@@ -3,7 +3,42 @@ import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 import { useEffect, useState } from "react";
 import ThemeToggle from "@/components/ThemeToggle";
 
-const nameLetters = "YUG VASHISTH".split("");
+const TypewriterDescription = ({ text, delay }: { text: string; delay: number }) => {
+  const [displayed, setDisplayed] = useState("");
+  const [started, setStarted] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setStarted(true), delay * 1000);
+    return () => clearTimeout(timer);
+  }, [delay]);
+
+  useEffect(() => {
+    if (!started) return;
+    let i = 0;
+    const interval = setInterval(() => {
+      setDisplayed(text.slice(0, i + 1));
+      i++;
+      if (i >= text.length) clearInterval(interval);
+    }, 25);
+    return () => clearInterval(interval);
+  }, [started, text]);
+
+  return (
+    <div className="mt-12 max-w-xl">
+      <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+        {displayed}
+        {started && displayed.length < text.length && (
+          <motion.span
+            animate={{ opacity: [1, 0] }}
+            transition={{ duration: 0.4, repeat: Infinity }}
+            className="inline-block w-[2px] h-[1em] bg-muted-foreground ml-0.5 align-middle"
+          />
+        )}
+      </p>
+    </div>
+  );
+};
+
 
 const letterVariants = {
   hidden: { opacity: 0, y: 80, rotateX: -90 },
