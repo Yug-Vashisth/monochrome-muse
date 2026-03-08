@@ -1,6 +1,43 @@
 import { motion } from "framer-motion";
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import { useEffect, useState } from "react";
 import ThemeToggle from "@/components/ThemeToggle";
+
+const TypewriterDescription = ({ text, delay }: { text: string; delay: number }) => {
+  const [displayed, setDisplayed] = useState("");
+  const [started, setStarted] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setStarted(true), delay * 1000);
+    return () => clearTimeout(timer);
+  }, [delay]);
+
+  useEffect(() => {
+    if (!started) return;
+    let i = 0;
+    const interval = setInterval(() => {
+      setDisplayed(text.slice(0, i + 1));
+      i++;
+      if (i >= text.length) clearInterval(interval);
+    }, 25);
+    return () => clearInterval(interval);
+  }, [started, text]);
+
+  return (
+    <div className="mt-12 max-w-xl">
+      <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+        {displayed}
+        {started && displayed.length < text.length && (
+          <motion.span
+            animate={{ opacity: [1, 0] }}
+            transition={{ duration: 0.4, repeat: Infinity }}
+            className="inline-block w-[2px] h-[1em] bg-muted-foreground ml-0.5 align-middle"
+          />
+        )}
+      </p>
+    </div>
+  );
+};
 
 const nameLetters = "YUG VASHISTH".split("");
 
@@ -97,16 +134,10 @@ const Hero = () => {
           transition={{ duration: 1, delay: 0.8, ease: [0.215, 0.61, 0.355, 1] }}
         />
 
-        <motion.div
-          className="mt-12 max-w-xl"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1 }}
-        >
-          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-            Software Engineering student at McMaster University with a passion for AI/ML, data science, and embedded systems, crafting intelligent solutions from silicon to software.
-          </p>
-        </motion.div>
+        <TypewriterDescription
+          text="Software Engineering student at McMaster University with a passion for AI/ML, data science, and embedded systems, crafting intelligent solutions from silicon to software."
+          delay={1}
+        />
 
         <motion.div
           className="mt-8 flex gap-6"
