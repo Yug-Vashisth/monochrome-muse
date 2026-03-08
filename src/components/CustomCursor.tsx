@@ -105,45 +105,6 @@ const CustomCursor = () => {
         </motion.div>
       ))}
 
-      {/* Outer crosshair arrows */}
-      <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-[9999] mix-blend-difference"
-        style={{
-          x: cursorX,
-          y: cursorY,
-          translateX: "-50%",
-          translateY: "-50%",
-          rotate: rotation,
-        }}
-        animate={{
-          opacity: isVisible ? 1 : 0,
-          scale: isClicking ? 0.7 : isHovering ? 1.5 : 1,
-        }}
-        transition={{ type: "spring", stiffness: 500, damping: 30 }}
-      >
-        <div className="relative w-10 h-10">
-          {/* Top arrow */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 flex flex-col items-center">
-            <div className="w-[1px] h-2 bg-background" />
-            <div className="w-0 h-0 border-l-[3px] border-r-[3px] border-b-[4px] border-l-transparent border-r-transparent border-b-background -mt-[1px] rotate-180" />
-          </div>
-          {/* Bottom arrow */}
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex flex-col items-center">
-            <div className="w-0 h-0 border-l-[3px] border-r-[3px] border-t-[4px] border-l-transparent border-r-transparent border-t-background -mb-[1px] rotate-180" />
-            <div className="w-[1px] h-2 bg-background" />
-          </div>
-          {/* Left arrow */}
-          <div className="absolute left-0 top-1/2 -translate-y-1/2 flex flex-row items-center">
-            <div className="w-0 h-0 border-t-[3px] border-b-[3px] border-r-[4px] border-t-transparent border-b-transparent border-r-background" />
-            <div className="h-[1px] w-2 bg-background -ml-[1px]" />
-          </div>
-          {/* Right arrow */}
-          <div className="absolute right-0 top-1/2 -translate-y-1/2 flex flex-row items-center">
-            <div className="h-[1px] w-2 bg-background -mr-[1px]" />
-            <div className="w-0 h-0 border-t-[3px] border-b-[3px] border-l-[4px] border-t-transparent border-b-transparent border-l-background" />
-          </div>
-        </div>
-      </motion.div>
 
       {/* Inner crosshair dot */}
       <motion.div
