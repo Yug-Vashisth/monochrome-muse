@@ -39,6 +39,7 @@ const TypewriterDescription = ({ text, delay }: { text: string; delay: number })
   );
 };
 
+const nameLetters = "YUG VASHISTH".split("");
 
 const letterVariants = {
   hidden: { opacity: 0, y: 80, rotateX: -90 },
