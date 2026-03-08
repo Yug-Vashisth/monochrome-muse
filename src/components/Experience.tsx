@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 const experiences = [
   {
@@ -8,8 +9,8 @@ const experiences = [
     location: "Waterdown, ON",
     description: "Operations & Test Engineering – Software",
     logo: "/l3logo.png",
-    highlights: [
-    ]
+    current: true,
+    highlights: []
   },
   {
     company: "McMaster University",
@@ -18,6 +19,7 @@ const experiences = [
     location: "Hamilton, ON",
     description: "Digital Systems & Computer Architecture",
     logo: "/maclogo.jpg",
+    current: true,
     highlights: [
       "Led weekly lab sessions for 60+ undergraduate students",
       "Designed simulation-based lab tools using VHDL/Verilog",
@@ -56,6 +58,7 @@ const experiences = [
     location: "Hamilton, ON",
     description: "Exoskeleton Technology",
     logo: "/exologo.png",
+    current: true,
     highlights: [
       "Designed motor control algorithms for exoskeleton technology",
       "Developed predictive AI models for user adaptability",
@@ -65,6 +68,13 @@ const experiences = [
 ];
 
 const Experience = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
+  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
   return (
     <section id="experience" className="py-32 section-padding bg-foreground text-background">
       <motion.div
@@ -78,46 +88,63 @@ const Experience = () => {
         <h2 className="text-5xl md:text-7xl font-bold mt-2">EXPERIENCE</h2>
       </motion.div>
 
-      <div className="space-y-0">
-        {experiences.map((exp, index) => (
+      <div className="relative" ref={containerRef}>
+        {/* Animated timeline line */}
+        <div className="absolute left-0 md:left-6 top-0 bottom-0 w-[1px] bg-background/10">
           <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            viewport={{ once: true }}
-            className="border-t border-background/20 py-10 grid md:grid-cols-12 gap-8"
-          >
-            <div className="md:col-span-4">
-              <div className="font-mono text-sm opacity-60">{exp.period}</div>
-              <div className="mt-2 flex items-start gap-4">
-                {exp.logo && (
-                  <img
-                    src={exp.logo}
-                    alt={`${exp.company} logo`}
-                    className="w-10 h-10 md:w-12 md:h-12 object-contain rounded-sm bg-background/10"
-                  />
+            className="w-full bg-background/60 origin-top"
+            style={{ height: lineHeight }}
+          />
+        </div>
+
+        <div className="space-y-0 pl-8 md:pl-16">
+          {experiences.map((exp, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="border-t border-background/20 py-10 grid md:grid-cols-12 gap-8 group relative hover:bg-background/5 transition-colors duration-300 -ml-8 md:-ml-16 pl-8 md:pl-16"
+            >
+              {/* Timeline dot */}
+              <div className="absolute left-0 md:left-6 top-10 w-3 h-3 -translate-x-[5px] border border-background/60 rotate-45 bg-foreground group-hover:bg-background group-hover:border-background transition-colors duration-300">
+                {exp.current && (
+                  <div className="absolute inset-0 border border-background/40 rotate-0 animate-ping" />
                 )}
-                <div>
-                  <h3 className="text-2xl font-bold">{exp.company}</h3>
-                  <div className="text-lg mt-1">{exp.role}</div>
-                  <div className="font-mono text-sm opacity-60 mt-2">{exp.location}</div>
+              </div>
+
+              <div className="md:col-span-4">
+                <div className="font-mono text-sm opacity-60">{exp.period}</div>
+                <div className="mt-2 flex items-start gap-4">
+                  {exp.logo && (
+                    <img
+                      src={exp.logo}
+                      alt={`${exp.company} logo`}
+                      className="w-10 h-10 md:w-12 md:h-12 object-contain rounded-sm bg-background/10 group-hover:scale-110 transition-transform duration-300"
+                    />
+                  )}
+                  <div>
+                    <h3 className="text-2xl font-bold">{exp.company}</h3>
+                    <div className="text-lg mt-1">{exp.role}</div>
+                    <div className="font-mono text-sm opacity-60 mt-2">{exp.location}</div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="md:col-span-8">
-              <div className="font-mono text-sm opacity-60 mb-4">{exp.description}</div>
-              <ul className="space-y-3">
-                {exp.highlights.map((highlight, i) => (
-                  <li key={i} className="flex gap-4">
-                    <span className="opacity-40 font-mono">→</span>
-                    <span className="opacity-80">{highlight}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </motion.div>
-        ))}
+              <div className="md:col-span-8">
+                <div className="font-mono text-sm opacity-60 mb-4">{exp.description}</div>
+                <ul className="space-y-3">
+                  {exp.highlights.map((highlight, i) => (
+                    <li key={i} className="flex gap-4">
+                      <span className="opacity-40 font-mono">→</span>
+                      <span className="opacity-80">{highlight}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

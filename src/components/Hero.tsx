@@ -2,11 +2,51 @@ import { motion } from "framer-motion";
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
 
+const nameLetters = "YUG VASHISTH".split("");
+
+const letterVariants = {
+  hidden: { opacity: 0, y: 80, rotateX: -90 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    rotateX: 0,
+    transition: {
+      duration: 0.6,
+      delay: 0.3 + i * 0.04,
+      ease: [0.215, 0.61, 0.355, 1] as [number, number, number, number],
+    },
+  }),
+};
+
+const MagneticLink = ({ href, children, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement> & { children: React.ReactNode }) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    e.currentTarget.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+  };
+  const handleMouseLeave = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.currentTarget.style.transform = "translate(0, 0)";
+  };
+
+  return (
+    <a
+      href={href}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className="flex items-center gap-2 font-mono text-sm hover-underline transition-transform duration-200"
+      {...props}
+    >
+      {children}
+    </a>
+  );
+};
+
 const Hero = () => {
   return (
     <section className="min-h-screen flex flex-col justify-between section-padding py-8">
       {/* Header */}
-      <motion.header 
+      <motion.header
         className="flex justify-between items-start gap-4 min-h-0 overflow-hidden"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -15,7 +55,7 @@ const Hero = () => {
         <div className="font-mono text-sm tracking-wider shrink-0">
           <span className="text-muted-foreground">SOFTWARE ENGINEER</span>
         </div>
-        <nav 
+        <nav
           className="flex items-center gap-4 md:gap-6 font-mono text-sm shrink min-w-0 overflow-x-auto overflow-y-hidden py-1 -my-1 [scrollbar-width:thin] [-webkit-overflow-scrolling:touch] touch-pan-x"
           aria-label="Main navigation"
         >
@@ -31,69 +71,70 @@ const Hero = () => {
 
       {/* Main Content */}
       <div className="flex-1 flex flex-col justify-center -mt-20">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <h1 className="text-[clamp(2.5rem,12vw,9rem)] font-bold leading-[0.85] tracking-tighter">
-            YUG
-            <br />
-            VASHISTH
+        <div className="overflow-hidden">
+          <h1 className="text-[clamp(2.5rem,12vw,9rem)] font-bold leading-[0.85] tracking-tighter flex flex-wrap">
+            {nameLetters.map((letter, i) => (
+              <motion.span
+                key={i}
+                custom={i}
+                variants={letterVariants}
+                initial="hidden"
+                animate="visible"
+                className={letter === " " ? "mr-[0.2em]" : "inline-block"}
+                style={{ display: "inline-block" }}
+              >
+                {letter === " " ? "\u00A0" : letter}
+              </motion.span>
+            ))}
           </h1>
-        </motion.div>
+        </div>
 
-        <motion.div 
+        {/* Animated line */}
+        <motion.div
+          className="h-[1px] bg-foreground mt-8 origin-left"
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 1, delay: 0.8, ease: [0.215, 0.61, 0.355, 1] }}
+        />
+
+        <motion.div
           className="mt-12 max-w-xl"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
+          transition={{ duration: 0.6, delay: 1 }}
         >
           <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
             Software Engineering student at McMaster University with a passion for AI/ML, data science, and embedded systems, crafting intelligent solutions from silicon to software.
           </p>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="mt-8 flex gap-6"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.7 }}
+          transition={{ duration: 0.6, delay: 1.2 }}
         >
-          <a 
-            href="https://github.com/yug-vashisth" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 font-mono text-sm hover-underline"
-          >
+          <MagneticLink href="https://github.com/yug-vashisth" target="_blank" rel="noopener noreferrer">
             <Github size={18} />
             GITHUB
-          </a>
-          <a 
-            href="https://linkedin.com/in/yug-vashisth" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 font-mono text-sm hover-underline"
-          >
+          </MagneticLink>
+          <MagneticLink href="https://linkedin.com/in/yug-vashisth" target="_blank" rel="noopener noreferrer">
             <Linkedin size={18} />
             LINKEDIN
-          </a>
-          <a 
-            href="mailto:vashisty@mcmaster.ca"
-            className="flex items-center gap-2 font-mono text-sm hover-underline"
-          >
+          </MagneticLink>
+          <MagneticLink href="mailto:vashisty@mcmaster.ca">
             <Mail size={18} />
             EMAIL
-          </a>
+          </MagneticLink>
         </motion.div>
       </div>
 
       {/* Bottom */}
-      <motion.div 
+      <motion.div
         className="flex justify-between items-end"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 1 }}
+        transition={{ duration: 0.6, delay: 1.4 }}
       >
         <div className="font-mono text-sm text-muted-foreground">
           <div>3.85 GPA</div>
