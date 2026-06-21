@@ -8,7 +8,7 @@ const experiences = [
     period: "Fall 2026 (Incoming)",
     location: "Toronto, ON",
     description: "Software Engineering",
-    logo: "/__l5e/assets-v1/7e1ca92b-d33a-479f-9a5c-4dc3d1b6f2f5/shopify-logo.png",
+    logo: "/__l5e/assets-v1/37c6e191-4f25-479c-a7a1-faf08e9d2fd5/shopify-logo.png",
     current: true,
     highlights: []
   },
