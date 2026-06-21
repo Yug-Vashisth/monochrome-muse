@@ -3,6 +3,16 @@ import { useRef } from "react";
 
 const experiences = [
   {
+    company: "Shopify",
+    role: "Incoming Software Engineering Intern",
+    period: "Fall 2026 (Incoming)",
+    location: "Remote",
+    description: "Software Engineering",
+    logo: "/__l5e/assets-v1/7e1ca92b-d33a-479f-9a5c-4dc3d1b6f2f5/shopify-logo.png",
+    current: true,
+    highlights: []
+  },
+  {
     company: "L3Harris Technologies",
     role: "Incoming Software Engineering Intern – Operations & Test Engineering",
     period: "Summer 2026 (Incoming)",
