@@ -19,8 +19,8 @@ const experiences = [
     location: "Waterdown, ON",
     description: "Operations & Test Engineering – Software",
     logo: "/l3logo.png",
-    current: true,
-    highlights: []
+    highlights: [
+    ]
   },
   {
     company: "McMaster University",
@@ -55,6 +55,7 @@ const experiences = [
     period: "Mar 2025 – May 2025",
     location: "Remote",
     description: "LLM Tools & RAG Systems",
+    logo: "/atlantislogo.png",
     highlights: [
       "Designed backend architecture for LLM tools with RAG",
       "Built ReAct agents with advanced retrieval capabilities",
