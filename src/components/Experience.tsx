@@ -50,6 +50,18 @@ const experiences = [
     ]
   },
   {
+    company: "Shopify",
+    role: "Software Engineering Intern",
+    period: "Summer 2024",
+    location: "Remote",
+    description: "E-commerce platform engineering",
+    logo: "/imagesshop.jpg",
+    highlights: [
+      "Worked on frontend performance improvements",
+      "Implemented feature toggles for rollout control"
+    ]
+  },
+  {
     company: "Atlantis AI",
     role: "AI Software Engineer Intern",
     period: "Mar 2025 – May 2025",
