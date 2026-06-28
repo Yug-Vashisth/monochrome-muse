@@ -3,9 +3,19 @@ import { useRef } from "react";
 
 const experiences = [
   {
+    company: "Shopify",
+    role: "incoming Software Engieering Intern",
+    period: "Fall 2026",
+    location: "Toronto, ON",
+    description: "incoming.",
+    logo: "/imagesshop.jpg",
+    highlights: [
+    ]
+  },
+  {
     company: "L3Harris Technologies",
-    role: "Incoming Software Engineering Intern – Operations & Test Engineering",
-    period: "Summer 2026 (Incoming)",
+    role: "Software Engineering Intern – Operations & Test Engineering",
+    period: "Summer 2026",
     location: "Waterdown, ON",
     description: "Operations & Test Engineering – Software",
     logo: "/l3logo.png",
@@ -37,18 +47,6 @@ const experiences = [
       "Engineered data pipelines and ETL processes across cloud and on-premise platforms",
       "Automated Tableau dashboards, improving reporting speed by 65%",
       "Reduced manual testing effort by 75% with QA automation scripts"
-    ]
-  },
-  {
-    company: "Shopify",
-    role: "Software Engineering Intern",
-    period: "Summer 2024",
-    location: "Remote",
-    description: "E-commerce platform engineering",
-    logo: "/imagesshop.jpg",
-    highlights: [
-      "Worked on frontend performance improvements",
-      "Implemented feature toggles for rollout control"
     ]
   },
   {
