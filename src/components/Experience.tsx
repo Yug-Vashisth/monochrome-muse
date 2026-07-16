@@ -5,7 +5,7 @@ const experiences = [
   {
     company: "L3Harris Technologies",
     role: "Software Engineering Intern",
-    period: "Summer 2026",
+    period: "May 2026 – Aug 2026",
     location: "Waterdown, ON",
     description: "Operations & Test Engineering – Software",
     logo: "/l3logo.png",
